@@ -57,7 +57,7 @@ def search_and_extract_data(root_folder):
     with ThreadPoolExecutor(max_workers=threads) as executor: # Количество потоков
         for root, dirs, files in os.walk(root_folder):
             for file_name in files:
-                if 'Passwords' or 'All_Passwords' in file_name:
+                if 'Passwords' in file_name:
                     file_path = os.path.join(root, file_name)
                     print(f'Обработка файла: {file_path}')
                     executor.submit(process_file, file_path, output_file_lock)
